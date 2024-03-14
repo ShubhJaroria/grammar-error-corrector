@@ -1,7 +1,7 @@
 ## Usage
 
 Download data.tsv from https://drive.google.com/file/d/1hybYPgX5p6QlrTC68ty6z5K3e4QXHi-R/view?usp=sharing 
-Install requirements.txt 
+Create a fresh conda env, and install requirements.txt 
 python run.py to train and run the model.
 
 ## Problem Statement
@@ -23,5 +23,7 @@ Since I have not added any layers to the architecture, and my dataset is quite s
 
 ## Evaluation
 
-run.py prints out BLEU score, the GLEU score, and the accuracy (perfect string match) over the test dataset.
-I have chosen to also include accuracy, since BLEU/GLEU score can be a little deceptive in this task. Most characters of the string are the same with the exception of one word, and thus the baseline BLEU/GLEU score would be misleading. I obtain a BLEU score of 0.9415 over the ~1k test dataset, a GLEU score of ____ and a string match accuracy of 91.02% .
+run.py prints out BLEU score, and the accuracy (over both strings and characters) over the test dataset.
+I have chosen to also include accuracy over the entire string (perfect string match) as well as character level accuracy, since BLEU score can be a little deceptive in this task. Most characters of the string are the same with the exception of one word, and thus the baseline BLEU score would be misleading. 
+I obtained a BLEU score of 0.9415 over the ~1k test dataset, which is very high. But when I compare it to the baseline BLEU score (BLEU score between the incorrect and correct sentences itself), it is ____
+However, string match accuracy comes out to be ____ and character level accuracy is ____ , which is a testament to the correct working of the model.
