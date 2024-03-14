@@ -25,5 +25,5 @@ Since I have not added any layers to the architecture, and my dataset is quite s
 
 run.py prints out BLEU score, and the accuracy (over both strings and characters) over the test dataset.
 I have chosen to also include accuracy over the entire string (perfect string match) as well as character level accuracy, since BLEU score can be a little deceptive in this task. Most characters of the string are the same with the exception of one word, and thus the baseline BLEU score would be misleading. 
-I obtained a BLEU score of 0.9649 over the ~1k test dataset, which is very high. But when I compare it to the baseline BLEU score (BLEU score between the incorrect and correct sentences itself), it is 0.7937.
-However, string match accuracy comes out to be 0.9302 and character level accuracy is 0.9405, which is a testament to the strength of the model.
+I obtained a BLEU score of 0.9524 over the ~1k test dataset, which is very high. But when I compare it to the baseline BLEU score (BLEU score between the incorrect and correct sentences itself), it is 0.7966.
+However, string match accuracy comes out to be 0.9312 and character level accuracy is 0.9337, which is a testament to the strength of the model.
