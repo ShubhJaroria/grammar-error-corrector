@@ -18,7 +18,7 @@ Train-test split of 90/10 is done.
 ## Model
 
 The dataset is not very large but it is sufficient enough that I can take advantage of a pre-trained T5-small model, and finetune it for my dataset. 
-It's trained for 3 epochs with a batch size of 8, and an adaptive learning rate.
+It's trained for 3 epochs with a batch size of 8, and an adaptive learning rate. A context size (max length) of 64 is chosen after analyzing the mean and std. dev of the input token lengths.
 Since I have not added any layers to the architecture, and my dataset is quite small, I did not train it for very long.
 
 ## Evaluation
