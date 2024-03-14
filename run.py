@@ -10,7 +10,7 @@ from transformers import T5ForConditionalGeneration, T5Tokenizer, AdamW, Seq2Seq
 from sklearn.model_selection import train_test_split
 from datasets import Dataset
 import evaluate
-
+torch.manual_seed(0)
 random.seed(42)
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -177,6 +177,16 @@ correct_outputs = list(test_df['correct'])
 #print(outputs)
 #print(len(outputs))
 
+def character_error_rate(s1, s2):
+    correct = 0
+    total = 0
+    for i in range(len(s1)):
+        total += max(len(s1[i]), len(s2[i]))
+        for j in range(min(len(s1[i]), len(s2[i]))):
+            if s1[i][j] == s2[i][j]:
+                correct += 1
+    return correct/total            
+
 def accuracy(s1, s2):
     count = 0
     for i in range(len(s1)):
@@ -187,7 +197,9 @@ def accuracy(s1, s2):
 #for i in range(100):
 #    print("Input:{}   Output:{}".format(inputs[i], outputs[i]))
 
-score = bleu.compute(predictions=outputs, references=correct_outputs)
-print(score)
-print(accuracy(outputs, correct_outputs))
+score1 = bleu.compute(predictions=outputs, references=correct_outputs)
+score2 = bleu.compute(predictions=inputs, references=correct_outputs)
+
+print("BLEU Score, after prediction: {} \n BLEU score, baseline: {}".format(score1, score2))
+print("Accuracy: {} \n Character Accuracy: {}".format(accuracy(outputs, correct_outputs), character_error_rate(outputs, correct_outputs)))
 
